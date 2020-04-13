@@ -48,6 +48,20 @@ public class AccountRepImpl implements AccountRepo
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public List<Account> findByAmount(int amount) {
+		// TODO Auto-generated method stub
+		return jdbcTemplate.query("select * from account where balance>?",new Object[] {amount},new AccountRowMapper());
+	}
+
+
+
+	public void deleteById(String accountNumber) {
+		// TODO Auto-generated method stub
+		String str="delete from account where accountNumber='"+accountNumber+"'";
+		 jdbcTemplate.update(str);
+		 System.out.println("account deleted successfully with id: "+accountNumber);
+	}
+	
 	
 	
 

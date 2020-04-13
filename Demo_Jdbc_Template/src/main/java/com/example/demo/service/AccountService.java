@@ -10,6 +10,9 @@ public interface AccountService
 	public Account updateById(Account account);
 	public List<Account> getAllAccountDetails();
 	public Account findByAccountNumber(String accountNumber);
+	public List<Account> findByAmount(int amount);
+	public void deleteById(String accountNumber);
+
 
 
 }

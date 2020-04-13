@@ -38,6 +38,18 @@ public class AccountServiceImpl implements AccountService
 		return accountRepo.findByAccountNumber(accountNumber);
 	}
 
+	public List<Account> findByAmount(int amount) {
+		// TODO Auto-generated method stub
+		return accountRepo.findByAmount(amount);
+	}
+
+	public void deleteById(String accountNumber) 
+	{
+		accountRepo.deleteById(accountNumber);
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }
