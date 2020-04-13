@@ -2,10 +2,6 @@ package com.example.demo.bean;
 
 public class AccountException extends Exception
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public AccountException() {

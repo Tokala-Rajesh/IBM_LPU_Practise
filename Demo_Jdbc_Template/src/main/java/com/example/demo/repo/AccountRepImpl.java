@@ -67,7 +67,7 @@ public class AccountRepImpl implements AccountRepo
 		}
 		else
 		{
-			throw new AccountException("there is no account find");
+			throw new AccountException("there is no account find in the data base please check once agail");
 		}
 	}
 	

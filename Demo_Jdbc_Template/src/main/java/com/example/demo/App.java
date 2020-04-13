@@ -13,10 +13,6 @@ import com.example.demo.bean.AccountType;
 import com.example.demo.service.AccountService;
 import com.example.demo.service.AccountServiceImpl;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
 	
