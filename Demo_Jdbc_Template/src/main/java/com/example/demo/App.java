@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.example.demo.bean.Account;
+import com.example.demo.bean.AccountException;
 import com.example.demo.bean.AccountType;
 import com.example.demo.service.AccountService;
 import com.example.demo.service.AccountServiceImpl;
@@ -19,7 +20,7 @@ import com.example.demo.service.AccountServiceImpl;
 public class App 
 {
 	
-    public static void main( String[] args )
+    public static void main( String[] args ) throws AccountException
     {
     	Scanner scanner=new Scanner(System.in);
     	ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -35,8 +36,9 @@ public class App
 			System.out.println("1.Create a Record");
 			System.out.println("2.List all records");
 			System.out.println("3.Find account by account number");
-			System.out.println("4.Update a record");
-			System.out.println("5.delete a record");
+			System.out.println("4.Find all details by balance");
+			System.out.println("5.Update a record");
+			System.out.println("6.delete a record");
 			choice=scanner.nextInt();
 			switch(choice)
 			{
@@ -62,6 +64,13 @@ public class App
 				
 				break;
 			case 4:
+				List<Account> list1=service.findByAmount(5000); 
+				for(Account acc:list1) 
+				{
+			    System.out.println(acc); 
+			    }
+				break;
+			case 5:
 				System.out.println("Enter the account number");
 				accountNumber=scanner.next();
 				System.out.println("Enter the account Type");
@@ -74,6 +83,14 @@ public class App
 				account.setInitialBalance(intialBalance);
 				account=service.updateById(account);
 				System.out.println(account);
+				break;
+			case 6:
+				service.deleteById("e38ea3c");
+				
+				break;
+			case 0:
+				System.out.println("bye!!!!!!!");
+				System.exit(0);
 				break;
 			}
 			

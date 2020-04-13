@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.bean.Account;
+import com.example.demo.bean.AccountException;
 import com.example.demo.bean.AccountRowMapper;
 
 @Repository
@@ -55,11 +56,19 @@ public class AccountRepImpl implements AccountRepo
 
 
 
-	public void deleteById(String accountNumber) {
+	public void deleteById(String accountNumber) throws AccountException {
 		// TODO Auto-generated method stub
-		String str="delete from account where accountNumber='"+accountNumber+"'";
+		String str="delete from account where accountNumber='"+accountNumber+"' IN account.accountNumber";
+		
+		if(str!=null)
+		{
 		 jdbcTemplate.update(str);
 		 System.out.println("account deleted successfully with id: "+accountNumber);
+		}
+		else
+		{
+			throw new AccountException("there is no account find");
+		}
 	}
 	
 	

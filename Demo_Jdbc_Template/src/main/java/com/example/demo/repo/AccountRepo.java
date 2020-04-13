@@ -3,6 +3,7 @@ package com.example.demo.repo;
 import java.util.List;
 
 import com.example.demo.bean.Account;
+import com.example.demo.bean.AccountException;
 
 public interface AccountRepo
 {
@@ -11,6 +12,6 @@ public interface AccountRepo
 	public List<Account> getAllAccountDetails();
 	public Account findByAccountNumber(String accountNumber);
     public List<Account> findByAmount(int amount);
-	public void deleteById(String accountNumber);
+	public void deleteById(String accountNumber) throws AccountException ;
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.bean.Account;
+import com.example.demo.bean.AccountException;
 import com.example.demo.repo.AccountRepo;
 
 @Service
@@ -43,7 +44,7 @@ public class AccountServiceImpl implements AccountService
 		return accountRepo.findByAmount(amount);
 	}
 
-	public void deleteById(String accountNumber) 
+	public void deleteById(String accountNumber) throws AccountException 
 	{
 		accountRepo.deleteById(accountNumber);
 		// TODO Auto-generated method stub
