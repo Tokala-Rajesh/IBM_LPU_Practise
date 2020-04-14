@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.bean.Account;
 import com.example.demo.bean.AccountException;
 import com.example.demo.bean.AccountRowMapper;
+//import com.example.demo.bean.PostContructor;
 
 @Repository
 public class AccountRepImpl implements AccountRepo 
@@ -24,6 +25,7 @@ public class AccountRepImpl implements AccountRepo
 		super();
 		this.jdbcTemplate = jdbcTemplate;
 	}
+	
 	public Account createAccount(Account account)
 	{
 		// TODO Auto-generated method stub
@@ -45,7 +47,15 @@ public class AccountRepImpl implements AccountRepo
 	public Account updateById(Account account)
 	{
 		String query="update account set accountType=?, balance=? where accountNumber=?";
-		jdbcTemplate.update(query,account.getAccountType(),account.getInitialBalance(),account.getAccountNumber());
+		int result=jdbcTemplate.update(query,account.getAccountType(),account.getInitialBalance(),account.getAccountNumber());
+		if(result==0)
+		{
+			System.out.println("there is no account find in the data base please check once again");
+		}
+		else
+		{
+			System.out.println("details updated succesfully");
+		}
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -56,18 +66,18 @@ public class AccountRepImpl implements AccountRepo
 
 
 
-	public void deleteById(String accountNumber) throws AccountException {
+	public void deleteById(String accountNumber)  { //throws AccountException
 		// TODO Auto-generated method stub
-		String str="delete from account where accountNumber='"+accountNumber+"' IN account.accountNumber";
-		
-		if(str!=null)
+		String str="delete from account where accountNumber='"+accountNumber+"'";
+		int result=jdbcTemplate.update(str);
+		if(result==0)
 		{
-		 jdbcTemplate.update(str);
-		 System.out.println("account deleted successfully with id: "+accountNumber);
+			System.out.println("there is no account find in the data base please check once agail");
+		 
 		}
 		else
 		{
-			throw new AccountException("there is no account find in the data base please check once agail");
+			System.out.println("account deleted successfully with id: "+accountNumber);
 		}
 	}
 	

@@ -44,7 +44,7 @@ public class AccountServiceImpl implements AccountService
 		return accountRepo.findByAmount(amount);
 	}
 
-	public void deleteById(String accountNumber) throws AccountException 
+	public void deleteById(String accountNumber) //throws AccountException 
 	{
 		accountRepo.deleteById(accountNumber);
 		

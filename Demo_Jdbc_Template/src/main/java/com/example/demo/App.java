@@ -16,7 +16,7 @@ import com.example.demo.service.AccountServiceImpl;
 public class App 
 {
 	
-    public static void main( String[] args ) throws AccountException
+    public static void main( String[] args ) //throws AccountException
     {
     	Scanner scanner=new Scanner(System.in);
     	ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");

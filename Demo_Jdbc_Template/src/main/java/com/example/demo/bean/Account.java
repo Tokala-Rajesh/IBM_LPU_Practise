@@ -19,6 +19,7 @@ public class Account
 		this.initialBalance = initialBalance;
 		
 	}
+	
 	public String getAccountNumber() {
 		return accountNumber;
 	}

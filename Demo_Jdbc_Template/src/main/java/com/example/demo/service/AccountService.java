@@ -12,7 +12,7 @@ public interface AccountService
 	public List<Account> getAllAccountDetails();
 	public Account findByAccountNumber(String accountNumber);
 	public List<Account> findByAmount(int amount);
-	public void deleteById(String accountNumber) throws AccountException ;
+	public void deleteById(String accountNumber) ; //throws AccountException 
 
 
 
