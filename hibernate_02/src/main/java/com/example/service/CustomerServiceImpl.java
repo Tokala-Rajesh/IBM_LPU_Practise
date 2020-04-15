@@ -28,4 +28,18 @@ public class CustomerServiceImpl implements CustomerService
 		return dao.getCustomerById(customerid);
 	}
 
+	public void updatebyId(Customer customer)
+	{
+		dao.updatebyId(customer);
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updatebyName(Customer customer)
+	{
+		dao.updatebyName(customer);
+		// TODO Auto-generated method stub
+		
+	}
+
 }

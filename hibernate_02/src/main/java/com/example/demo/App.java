@@ -31,6 +31,8 @@ public class App
         	System.out.println("1. Create a Customer");
 			System.out.println("2. Display All details of Customers");
 			System.out.println("3. Diplay details of customer by id");
+			System.out.println("4. Update details of customer by id");
+			System.out.println("5. Update details of customer by name");
 			System.out.print("enter your choice:  ");
 			
 			choice=scanner.nextInt();
@@ -77,6 +79,67 @@ public class App
 				{
 					System.out.println(customer);
 				}
+				break;
+			case 4:
+				System.out.println("enter the customer id");
+				customer=service.getCustomerById(scanner.next());
+				if(customer==null)
+				{
+					System.out.println("No Such Student Found With given ID: ");
+				}
+				else
+				{
+					System.out.println("enter the customer name");
+					name=scanner.next();
+					System.out.println("enter the customer email id");
+					email=scanner.next();
+					System.out.println("1. press 1 for Yes");
+	     	        System.out.println("2. press 2 for No");
+	   			    availableChoice= scanner.nextInt();
+	   			    scanner.nextLine();
+	   			    if(availableChoice==1)
+	   			    	isAvailable=true;
+	   			    else
+	   			    	isAvailable=false;
+	
+	   			    customer.setCustomerName(name);
+	   			    customer.setEmail(email);
+	   			    customer.setActive(isAvailable);
+	   			   
+					service.updatebyId(customer);
+					System.out.println(customer);
+				}
+				
+				break;
+			case 5:
+//				System.out.println("enter the customer name");
+//				customer=service.getCustomerName(scanner.next());
+//				if(customer==null)
+//				{
+//					System.out.println("No Such Student Found With given ID: ");
+//				}
+//				else
+//				{
+//					System.out.println("enter the customer name");
+//					name=scanner.next();
+//					System.out.println("enter the customer email id");
+//					email=scanner.next();
+//					System.out.println("1. press 1 for Yes");
+//	     	        System.out.println("2. press 2 for No");
+//	   			    availableChoice= scanner.nextInt();
+//	   			    scanner.nextLine();
+//	   			    if(availableChoice==1)
+//	   			    	isAvailable=true;
+//	   			    else
+//	   			    	isAvailable=false;
+//	
+//	   			    customer.setCustomerName(name);
+//	   			    customer.setEmail(email);
+//	   			    customer.setActive(isAvailable);
+//	   			   
+//					service.updatebyId(customer);
+//					System.out.println(customer);
+//				}
 				break;
 			case 0:
 				System.out.println("Bye");

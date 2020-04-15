@@ -31,7 +31,9 @@ public class CustomerDaoImpl implements CustomerDao
 
 	public List<Customer> DiaplayAll()
 	{
+		session.getTransaction().begin();
 		List<Customer> list=session.createQuery("from Customer",Customer.class).list();
+		session.getTransaction().commit();
 		// TODO Auto-generated method stub
 		return list;
 	}
@@ -39,6 +41,28 @@ public class CustomerDaoImpl implements CustomerDao
 	public Customer getCustomerById(String customerid) {
 		// TODO Auto-generated method stub
 		return session.get(Customer.class, customerid);
+	}
+
+	public void updatebyId(Customer customer)
+	{
+		session.getTransaction().begin();
+		session.get(Customer.class, customer.getCustomerid());
+	
+		
+		session.getTransaction().commit();
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updatebyName(Customer customer)
+	{
+		session.getTransaction().begin();
+		session.get(Customer.class, customer.getCustomerName());
+	
+		
+		session.getTransaction().commit();
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -9,5 +9,7 @@ public interface CustomerService
 	public Customer createCustomer(Customer customer);
 	public List<Customer> DiaplayAll();
 	public Customer getCustomerById(String customerid);
+	public void updatebyId(Customer customer);
+	public void updatebyName(Customer customer);
 
 }
