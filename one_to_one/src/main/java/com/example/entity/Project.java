@@ -1,10 +1,12 @@
 package com.example.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +20,9 @@ public class Project
 	@Column(name="project_name")
 	private String projectName;
 	
+	@OneToOne(mappedBy="project", cascade=CascadeType.ALL)
+	private Student student;
+
 	public Project() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -28,6 +33,15 @@ public class Project
 		this.id=id;
 		this.projectName = projectName;
 
+	}
+	
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public int getId() {

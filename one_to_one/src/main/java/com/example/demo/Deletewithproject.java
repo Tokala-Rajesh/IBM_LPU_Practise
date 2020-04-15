@@ -7,22 +7,35 @@ import org.hibernate.cfg.Configuration;
 import com.example.entity.Project;
 import com.example.entity.Student;
 
-public class Create 
+public class Deletewithproject
 {
 	public static void main(String[] args) {
+
+		
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class).addAnnotatedClass(Project.class).buildSessionFactory();
-		Session session = factory.openSession();
+		Session session = factory.getCurrentSession();
+		
 		try {			
-			Student tempStudent=new Student("Rajesh", "Tokala", "rajesh@gmail.com");
-			Project tempProject=new Project(3,"StudentManagement");			
-			tempStudent.setProject(tempProject);	
+			
 			session.beginTransaction();
-			System.out.println("Student details " + tempStudent);
-			session.save(tempStudent);					
+
+			int id = 2;
+			Project tempProject=session.get(Project.class, id);
+			System.out.println("tempProject: " + tempProject);
+			System.out.println("the associated instructor: " + tempProject.getStudent());
+			System.out.println("Deleting tempProject: " + tempProject);
+			session.delete(tempProject);
 			session.getTransaction().commit();
+			System.out.println("Done!");
+		}
+		catch (Exception exc) {
+			exc.printStackTrace();
 		}
 		finally {
 			
+			session.close();
+			
+			factory.close();
 		}
 	}
 
