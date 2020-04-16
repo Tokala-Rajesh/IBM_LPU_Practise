@@ -40,7 +40,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 		entityManager.persist(employee);
 		entityManager.getTransaction().commit();
 		// TODO Auto-generated method stub
-		return null;
+		return employee;
 	}
 
 	public void updateEmployee(Employee employee)
