@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Student Name form</title>
 </head>
 <body>
 <form action="processFormVersion2" method="GET">

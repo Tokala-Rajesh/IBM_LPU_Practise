@@ -13,21 +13,36 @@ import com.example.model.Student;
 @RequestMapping("/student")
 public class StudentController 
 {
+//	@RequestMapping("/showForm")
+//	public String showForm(Model model)
+//	{
+//		Student student=new Student();
+//		model.addAttribute("student", student);
+//		return "student-form";
+//	}
+//	@RequestMapping("/processForm")
+//	public String processForm(@ModelAttribute("student") Student theStudent, Model model)
+//	{
+//		theStudent.setId(UUID.randomUUID().toString());
+//		model.addAttribute("student", theStudent);
+//		return "student-conformation";
+//		
+//		
+//	}
+	
 	@RequestMapping("/showForm")
-	public String showForm(Model model)
+	public String showForm(Model theModel) 
 	{
-		Student student=new Student();
-		model.addAttribute("student", student);
+		Student theStudent = new Student();
+		theModel.addAttribute("student", theStudent);
 		return "student-form";
 	}
+	
 	@RequestMapping("/processForm")
-	public String processForm(@ModelAttribute("student") Student theStudent, Model model)
+	public String processForm(@ModelAttribute("student") Student theStudent)
 	{
-		theStudent.setId(UUID.randomUUID().toString());
-		model.addAttribute("student", theStudent);
+		System.out.println("theStudent: " + theStudent.getFirstName()+ " " + theStudent.getLastName());
 		return "student-conformation";
-		
-		
 	}
 
 }

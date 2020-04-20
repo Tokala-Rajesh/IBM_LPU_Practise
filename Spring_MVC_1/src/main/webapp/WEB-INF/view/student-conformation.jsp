@@ -7,9 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-Student ID: ${student.id}<br/>
+<%-- Student ID: ${student.id}<br/>
 Student First Name: ${student.firstName}<br/>
 Student Last Name: ${student.lastName}</br>
-Student Email: ${student.email}<br/>
+Student Email: ${student.email}<br/> --%>
+The student is confirmed: ${student.firstName} ${student.lastName}
+<br><br>
+
+Country: ${student.country}
+<br><br>
+
+Favorite Language: ${student.favoriteLanguage}
+<br><br>
+
+Operating System: ${student.operatingSystems}
 </body>
 </html>

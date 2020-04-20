@@ -1,50 +1,124 @@
 package com.example.model;
 
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+
 public class Student
 {
-	private String id;
+//	private String id;
+//	private String firstName;
+//	private String lastName;
+//	private String email;
+//	public String getId() {
+//		return id;
+//	}
+//	public void setId(String id) {
+//		this.id = id;
+//	}
+//	public String getFirstName() {
+//		return firstName;
+//	}
+//	public void setFirstName(String firstName) {
+//		this.firstName = firstName;
+//	}
+//	public String getLastName() {
+//		return lastName;
+//	}
+//	public void setLastName(String lastName) {
+//		this.lastName = lastName;
+//	}
+//	public String getEmail() {
+//		return email;
+//	}
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+//	public Student(String id, String firstName, String lastName, String email) {
+//		super();
+//		this.id = id;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.email = email;
+//	}
+//	public Student() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
+//	@Override
+//	public String toString() {
+//		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+//	}
+	
 	private String firstName;
 	private String lastName;
-	private String email;
-	public String getId() {
-		return id;
+	
+	private String country;
+	
+	private LinkedHashMap<String, String> countryOptions;
+	
+	private String favoriteLanguage;
+	
+	private String[] operatingSystems;
+	
+	public Student() {
+		
+		// populate country options: used ISO country code
+		countryOptions = new LinkedHashMap<String, String>();
+		
+		countryOptions.put("BR", "Brazil");
+		countryOptions.put("FR", "France");
+		countryOptions.put("DE", "Germany");
+		countryOptions.put("IN", "India");
+		countryOptions.put("US", "United States of America");		
+
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getEmail() {
-		return email;
+
+	public String getCountry() {
+		return country;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
-	public Student(String id, String firstName, String lastName, String email) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
+
+	public LinkedHashMap<String, String> getCountryOptions() {
+		return countryOptions;
 	}
-	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
+
+	public String getFavoriteLanguage() {
+		return favoriteLanguage;
 	}
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+
+	public void setFavoriteLanguage(String favoriteLanguage) {
+		this.favoriteLanguage = favoriteLanguage;
 	}
+
+	public String[] getOperatingSystems() {
+		return operatingSystems;
+	}
+
+	public void setOperatingSystems(String[] operatingSystems) {
+		this.operatingSystems = operatingSystems;
+	}
+
+	
+	
 	
 	
 
