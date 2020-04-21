@@ -1,0 +1,14 @@
+{
+	"id": 4,
+	"firstName": "Rajesh",
+	"lastName": "Tokala",
+	"active": true,
+	"address": {
+		"street": "Shivaji Nagar",
+		"city": "Nirmal",
+		"state": "Telangana",
+		"zip": "504106",
+		"country": "INDIA"
+	},
+	"languages" : ["Java", "C#", "Python", "Javascript"]
+}
