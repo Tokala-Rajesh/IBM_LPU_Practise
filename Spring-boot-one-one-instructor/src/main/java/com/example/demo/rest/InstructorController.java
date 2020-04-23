@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dao.InstructorDAO;
 import com.example.demo.entity.Instructor;
 
+
 @RestController
 @RequestMapping("/api")
 public class InstructorController {
@@ -37,7 +38,12 @@ public class InstructorController {
 	@GetMapping("/instructors/{id}")
 	public Instructor getInstructorById(@PathVariable int id)
 	{
-		return instructorDAO.getInstructorById(id);
+		Instructor inst=instructorDAO.getInstructorById(id);
+		if(inst==null)
+		{
+			throw new InstructorNotFoundException("No such id found"  + id);
+		}
+		return inst;
 	}
 	@PutMapping("/instructors")
 	public void updateInstructor(@RequestBody Instructor instructor)
