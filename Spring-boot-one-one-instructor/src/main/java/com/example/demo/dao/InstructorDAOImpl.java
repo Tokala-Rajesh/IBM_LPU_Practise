@@ -48,9 +48,10 @@ public class InstructorDAOImpl implements InstructorDAO{
 	@Transactional
 	public void deleteInstructorbyId(int id)
 	{
-		Instructor inst=  entityManager.find(Instructor.class, id);
-		 entityManager.remove(inst);
+		//Instructor inst=entityManager.find(Instructor.class, id);
+		 entityManager.remove(entityManager.find(Instructor.class, id));
 		// TODO Auto-generated method stub
+		 
 		
 	}
 

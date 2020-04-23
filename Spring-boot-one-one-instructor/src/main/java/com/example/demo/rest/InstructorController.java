@@ -50,7 +50,7 @@ public class InstructorController {
 	{
 		instructorDAO.updateInstructor(instructor);
 	}
-	@DeleteMapping("/instructors")
+	@DeleteMapping("/instructors/{id}")
 	public void deleteInstructorbyId(@PathVariable int id)
 	{
 		instructorDAO.deleteInstructorbyId(id);
