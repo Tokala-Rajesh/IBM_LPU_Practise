@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.InstructorDAO;
+import com.example.demo.dao.InstructorDeatailsDAO;
 import com.example.demo.entity.Instructor;
+import com.example.demo.entity.InstructorDetail;
 
 
 @RestController
@@ -22,6 +24,8 @@ public class InstructorController {
 
 	@Autowired
 	private InstructorDAO instructorDAO;
+	@Autowired
+	private InstructorDeatailsDAO instructorDeatailsDAO;
 	
 	
 	
@@ -54,6 +58,34 @@ public class InstructorController {
 	public void deleteInstructorbyId(@PathVariable int id)
 	{
 		instructorDAO.deleteInstructorbyId(id);
+	}
+	
+	
+	
+	@PostMapping("/instructorDetails")
+	public void createInstructorDetails(@RequestBody InstructorDetail instructorDetail)
+	{
+		instructorDeatailsDAO.createInstructorDetails(instructorDetail);
+	}
+	@GetMapping("/instructorDetails")
+	public List<InstructorDetail> getAllInstructorsDetailswithInstructor()
+	{
+		return instructorDeatailsDAO.getAllInstructorsDetailswithInstructor();
+	}
+	@GetMapping("/instructorDetails/{id}")
+    public InstructorDetail getInstructorDeatilsandInstructorById( @PathVariable int id)
+    {
+    	return instructorDeatailsDAO.getInstructorDeatilsandInstructorById(id);
+    }
+	@PutMapping("/instructorDetails")
+	public void updateInstructorDetailsbyId(@RequestBody InstructorDetail instructorDetail)
+	{
+		instructorDeatailsDAO.updateInstructorDetailsbyId(instructorDetail);
+	}
+	@DeleteMapping("/instructorDetails/{id}")
+	public void deleteInstructorDetailsbyId(@PathVariable int id)
+	{
+		instructorDeatailsDAO.deleteInstructorDetailsbyId(id);
 	}
 	
 	
