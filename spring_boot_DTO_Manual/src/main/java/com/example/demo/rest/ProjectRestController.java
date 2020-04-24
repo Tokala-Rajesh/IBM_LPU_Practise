@@ -50,7 +50,22 @@ public class ProjectRestController
 	 @DeleteMapping("/projects/{id}")
 	 public ResponseEntity<Project> deleteById(@PathVariable Integer id)
 	 {
-	  return new ResponseEntity(projectService.deleteProject(id),HttpStatus.OK);
+	     return new ResponseEntity(projectService.deleteProject(id),HttpStatus.OK);
+	 }
+	 @GetMapping("/projects/name/{name}")
+	 public ResponseEntity<Iterable<Project>> getProjectByName(@PathVariable("name") String name)
+	 {
+		return ResponseEntity.ok().body(projectService.findByName(name));
+	 }
+	 @GetMapping("/projects/both/{name}/{agentName}")
+	 public ResponseEntity<Iterable<Project>> getProjectByNameandAgentName(@PathVariable("name") String name,@PathVariable("agentName") String agentName)
+	 {
+		return ResponseEntity.ok().body(projectService.findByNameAndAgentName(name, agentName));
+	 }
+	 @DeleteMapping("/projects/name/{name}")
+	 public void deleteByName(@PathVariable("name") String name)
+	 {
+		 projectService.deleteByName(name);
 	 }
 
 }
