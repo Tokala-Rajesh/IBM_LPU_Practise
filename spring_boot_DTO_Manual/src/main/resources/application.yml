@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: crud DTO
+  h2:
+    console:
+      enabled: true
+      path: /h2  
+
