@@ -54,18 +54,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	@Transactional
-	public void updateEmployee(Employee employee)
+	public Employee updateEmployee(Employee employee)
 	{
-		entityManager.merge(employee);
+		return entityManager.merge(employee);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	@Transactional
-	public void DeleteEmployee(int id) 
+	public Employee DeleteEmployee(int id) 
 	{
-		entityManager.remove(entityManager.find(Employee.class, id));
+		Employee emp=entityManager.find(Employee.class, id);
+		entityManager.remove(emp);
+		return emp;
 
 		// TODO Auto-generated method stub
 		

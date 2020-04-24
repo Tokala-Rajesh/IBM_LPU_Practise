@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.EmployeeDAO;
 import com.example.demo.data.Employee;
+import com.example.exception.ResourceNotFoundException;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 @RestController
@@ -44,24 +46,43 @@ public class EmployeeController {
 	{
 		return employeeDAO.getEmployees();
 	}
+    @ApiOperation(value = "Add an employee")
 	@PostMapping("/employees")
-	public Employee createEmployee(@RequestBody Employee employee)
+	public Employee createEmployee(@ApiParam(value = "Employee object store in database table", required = true) @RequestBody Employee employee)
 	{
 		return employeeDAO.createEmployee(employee);
 	}
+	@ApiOperation(value = "Get an employee by Id")
 	@GetMapping("/employees/{id}")
-	public Employee getEmployeeById(@PathVariable int id)
+	public Employee getEmployeeById(@ApiParam(value = "Employee id from which employee object will retrieve", required = true) @PathVariable int id) throws ResourceNotFoundException
 	{
-		return employeeDAO.getEmployeeById(id);
+		Employee emp=employeeDAO.getEmployeeById(id);
+		if(emp==null)
+		{
+			throw new ResourceNotFoundException("No employee found with id = "+id);
+		}
+		return emp;
 	}
+	@ApiOperation(value = "Update an employee")
 	@PutMapping("/employees")
-	public void updateEmployee(@RequestBody Employee employee)
+	public Employee updateEmployee(@ApiParam(value = "Employee Id to update employee object", required = true) @RequestBody Employee employee)  throws ResourceNotFoundException
 	{
-		employeeDAO.updateEmployee(employee);
+		Employee emp=employeeDAO.updateEmployee(employee);
+		if(emp==null)
+		{
+			throw new ResourceNotFoundException("No employee found with id = "+employee.getId());
+		}
+		return emp;
 	}
+	@ApiOperation(value = "Delete an employee")
     @DeleteMapping("/employees/{id}")
-	public void DeleteEmployee(@PathVariable int id)
+	public Employee DeleteEmployee(@ApiParam(value = "Employee Id from which employee object will delete from database table", required = true)@PathVariable int id) throws ResourceNotFoundException
 	{
-		employeeDAO.DeleteEmployee(id);
+		Employee emp=employeeDAO.DeleteEmployee(id);
+		if(emp==null)
+		{
+			throw new ResourceNotFoundException("No employee found with id = "+id);
+		}
+		return emp;
 	}
 }
