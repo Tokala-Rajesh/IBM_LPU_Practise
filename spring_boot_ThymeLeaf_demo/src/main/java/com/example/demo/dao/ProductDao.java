@@ -10,6 +10,7 @@ public interface ProductDao
 	public List<Product> getAllProducts();
 	public Product getProductById(Integer id);
 	public Product update(Product product);
+	public void deletebyId(Integer id);
 
    
 

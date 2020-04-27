@@ -10,6 +10,7 @@ public interface ProductService
 	public List<Product> getAllProducts();
 	public Product getProductById(Integer id);
 	public Product update(Product product) ;
+	public void deleteById(Integer id);
 
 
 }

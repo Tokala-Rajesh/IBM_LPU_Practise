@@ -40,7 +40,7 @@ public class ProductController
     @RequestMapping(value = "/product", method = RequestMethod.POST)
     public String saveProduct(Product product)
     {
-        Product save = productService.update(product);
+        productService.update(product);
         return "redirect:/products/";
     }
     
@@ -62,6 +62,14 @@ public class ProductController
     {
         productService.update(product);
         return "redirect:/products/";
+    }
+    @RequestMapping(value = "/product/delete/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Integer id,Model model)
+    {
+    	model.addAttribute("product", productService.getProductById(id));
+    	productService.deleteById(id);
+		
+    	
     }
 
     

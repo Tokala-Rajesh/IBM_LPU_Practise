@@ -48,4 +48,14 @@ public class ProductServiceImpl implements ProductService
 		return productDao.update(product);
 	}
 
+
+	@Override
+	public void deleteById(Integer id) 
+	{
+		productDao.deletebyId(id);
+		
+	   // TODO Auto-generated method stub
+		
+	}
+
 }

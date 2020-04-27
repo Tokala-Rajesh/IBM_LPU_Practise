@@ -57,6 +57,16 @@ public class ProductDaoImpl implements ProductDao
 		// TODO Auto-generated method stub
 		return em.merge(product);
 	}
+
+
+	@Override
+	@Transactional
+	public void deletebyId(Integer id) 
+	{
+		em.remove(id);
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
