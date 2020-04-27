@@ -40,7 +40,7 @@ public class ProductController
     @RequestMapping(value = "/product", method = RequestMethod.POST)
     public String saveProduct(Product product)
     {
-        Product save = productService.addProducts(product);
+        Product save = productService.update(product);
         return "redirect:/products/";
     }
     
@@ -49,6 +49,19 @@ public class ProductController
     {
         model.addAttribute("product", productService.getProductById(id));
         return "product";
+    }
+    @RequestMapping("/product/new/{id}")
+    public String editProduct(@PathVariable Integer id,Model model)
+    {
+    	
+		model.addAttribute("product", productService.getProductById(id));
+        return "productform";
+    }
+    @RequestMapping(value = "/product", method = RequestMethod.PUT)
+    public String updateProduct(Product product)
+    {
+        productService.update(product);
+        return "redirect:/products/";
     }
 
     

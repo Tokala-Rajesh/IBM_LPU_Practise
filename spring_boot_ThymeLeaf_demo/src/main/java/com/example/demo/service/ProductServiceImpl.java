@@ -41,4 +41,11 @@ public class ProductServiceImpl implements ProductService
 		return productDao.getProductById(id);
 	}
 
+
+	@Override
+	public Product update(Product product) {
+		// TODO Auto-generated method stub
+		return productDao.update(product);
+	}
+
 }

@@ -32,10 +32,6 @@ public class ProductDaoImpl implements ProductDao
 		return query.getResultList();
 	}
 
-
-	
-
-
 	@Override
 	@Transactional
 	public Product addProducts(Product product) 
@@ -44,9 +40,6 @@ public class ProductDaoImpl implements ProductDao
 		return product;
 	}
 		// TODO Auto-generated method stub
-		
-
-
 	@Override
 	@Transactional
 	public Product getProductById(Integer id)
@@ -54,6 +47,15 @@ public class ProductDaoImpl implements ProductDao
 		
 		// TODO Auto-generated method stub
 		return em.find(Product.class, id);
+	}
+
+
+	@Override
+	@Transactional
+	public Product update(Product product) 
+	{
+		// TODO Auto-generated method stub
+		return em.merge(product);
 	}
 	
 

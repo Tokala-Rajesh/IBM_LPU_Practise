@@ -9,6 +9,7 @@ public interface ProductService
 	public Product addProducts(Product product);
 	public List<Product> getAllProducts();
 	public Product getProductById(Integer id);
+	public Product update(Product product) ;
 
 
 }
