@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import com.example.exception.ResourceNotFoundException;
 
@@ -22,7 +23,7 @@ public class UserController
 	@RequestMapping("/movies/{userId}")
 	public List getAllmoviesByuserId(@PathVariable int userId) throws ResourceNotFoundException
 	{
-		com.example.demo.entity.User u=userService.findUserById(userId);
+		User u=userService.findUserById(userId);
 		if(u==null)
 		{
 			throw new ResourceNotFoundException("No employee found with id = "+userId);//return null;
