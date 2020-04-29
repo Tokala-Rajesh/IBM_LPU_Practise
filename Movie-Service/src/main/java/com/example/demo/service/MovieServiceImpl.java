@@ -27,4 +27,28 @@ public class MovieServiceImpl implements MovieService
 		return (List<Movie>) movieDao.findAll();
 	}
 
+
+	@Override
+	public Movie addMovies(Movie movie) {
+		// TODO Auto-generated method stub
+		return movieDao.save(movie);
+	}
+
+
+	@Override
+	public Movie updateMovie(Movie movie) 
+	{
+		// TODO Auto-generated method stub
+		return movieDao.save(movie);
+	}
+	
+
+
+	@Override
+	public void deleteMovie(int id) 
+	{
+		// TODO Auto-generated method stub
+	    movieDao.deleteById(id);
+	}
+
 }
