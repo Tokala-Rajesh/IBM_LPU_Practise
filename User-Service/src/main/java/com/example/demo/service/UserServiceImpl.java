@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -40,6 +41,22 @@ public class UserServiceImpl implements UserService
 	{
 		// TODO Auto-generated method stub
 		return restTemplate.getForObject("http://movie-service/movies", List.class);
+	}
+	public Object findById(int id)
+	{
+		return restTemplate.getForObject("http://movie-service/movies",Object.class);
+	}
+	public Object delete(int userId,int id)
+	{
+		return restTemplate.getForObject("http://movie-service/movies",Object.class);
+	}
+	public Object save(int userId,Object o)
+	{
+		return restTemplate.getForObject("http://movie-service/movie",Object.class);
+	}
+	public Object update(int userId,Object o)
+	{
+		return restTemplate.getForObject("http://movie-service/movie",Object.class);
 	}
 
 }

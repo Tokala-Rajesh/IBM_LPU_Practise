@@ -2,18 +2,18 @@ package com.example.demo.rest;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
-import com.example.exception.UserNotFounException;
-import com.example.exception.UserResponseEntity;
+
 
 @RestController
 public class UserController
@@ -25,12 +25,12 @@ public class UserController
 		this.userService = userService;
 	}
 	@RequestMapping("/movies/{userId}")
-	public List getAllmoviesByuserId(@PathVariable int userId) throws UserNotFounException
+	public List getAllmoviesByuserId(@PathVariable int userId) throws UserNotFoundException
 	{
 		User u=userService.findUserById(userId);
 		if(u==null)
 		{
-			throw new UserNotFounException("Unotherized User ");//return null;
+			throw new UserNotFoundException("Unotherized User ");//return null;
 		}
 		else
 		{	
@@ -48,18 +48,47 @@ public class UserController
 	{
 		return userService.findUserById(userId);
 	}
-	@ExceptionHandler
-	public ResponseEntity<UserResponseEntity> handleException(UserNotFounException exe)
+	
+	@PutMapping("/movies/{userId}")
+	public Object update(@PathVariable int userId, @RequestBody Object object)
 	{
-		return new ResponseEntity<UserResponseEntity>(new UserResponseEntity(HttpStatus.NOT_FOUND.value(),exe.getMessage(),System.currentTimeMillis()),HttpStatus.NOT_FOUND);
-		
-		 
+		User u=userService.findUserById(userId);
+		if(u==null)
+		{
+			throw new UserNotFoundException("Unotherized User ");//return null;
+		}
+		else
+		{
+		return userService.update(userId, object);
+		}
 	}
-	@ExceptionHandler
-	public ResponseEntity<UserResponseEntity> handleNumberFormatException(NumberFormatException ipme)
+	@DeleteMapping("/movies/{userId}/{id}")
+	public Object del(@PathVariable("userId") Integer userId,@PathVariable("id") Integer id)
 	{
-		return new ResponseEntity<UserResponseEntity>(new UserResponseEntity(HttpStatus.BAD_REQUEST.value(),"must provide numeric value", System.currentTimeMillis()),HttpStatus.BAD_REQUEST);
+		User u=userService.findUserById(userId);
+		if(u==null)
+		{
+			throw new UserNotFoundException("Unotherized User ");//return null;
+		}
+		else
+		{	
+		return userService.delete(userId, id);
+		}
 	}
+	@PostMapping("/movies/{userId}")
+	public Object save(@PathVariable("userId") Integer userId,@RequestBody Object object)
+	{
+		User u=userService.findUserById(userId);
+		if(u==null)
+		{
+			throw new UserNotFoundException("Unotherized User ");//return null;
+		}
+		else
+		{
+		return userService.save(userId, object);
+		}
+	}
+	
 }
 	
 

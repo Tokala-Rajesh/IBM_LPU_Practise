@@ -11,5 +11,10 @@ public interface UserService
 	public List getAllMovies(); //int userId
 	public User findUserById(int userId);
 	public List getAllmoviesByuserId(int userId);
+	public Object findById(int id);
+	public Object delete(int userId,int id);
+	public Object save(int userId,Object o);
+	public Object update(int userId,Object o);
+//	public Object addmovies(int userId,Movie movie);
 
 }
