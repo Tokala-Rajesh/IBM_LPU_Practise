@@ -25,7 +25,7 @@ public class SmtpMailSender
          SimpleMailMessage mail = new SimpleMailMessage();
           
          mail.setTo(usermodel.getEmail());
-         mail.setFrom("rajesh.mp1998@gmail.com");
+         mail.setFrom("bintu.mp1998@gmail.com");
          mail.setSubject(usermodel.getMessage());
          mail.setText(sb.toString());
          javaMailSender.send(mail);
